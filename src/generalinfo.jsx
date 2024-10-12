@@ -1,10 +1,6 @@
 import { useState} from 'react';
 import './stylefiles/generalinfo.css';
 
-//function Info({index, inf}){
-   // return (<div> {index}{inf}</div>
-     //       )
-//}
 function Info({index, inf}){
     return (
         <div className="in">
@@ -83,7 +79,7 @@ function Generalinfo({ x, y, z}){
                      onChange={(e) => {setMobile(e.target.value)}}
                   />                        
               </label>
-
+              <button itemID='save' type='submit' onClick={Save}>Save</button>
             </form>
         </>
     
@@ -95,7 +91,6 @@ function Generalinfo({ x, y, z}){
             <h3>Personal Information</h3>
             <div className="basic" style={{display:show, backgroundColor: col}}>
                 {Form()}
-                <button itemID='save'  onClick={Save}>Save</button>
             </div>
             <div className="info">
                 {personal.map((persona) => <Info key = {persona.id} inf = {persona.inf} index = {field[persona.index]}/>)}
