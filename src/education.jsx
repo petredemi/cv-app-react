@@ -1,10 +1,11 @@
 import { useState} from 'react';
-import  './stylefiles/generalinfo.css';
+import  styles from'./stylefiles/education.module.css';
 
-function Info({index, inf}){
+
+function Info({index, inf, }){
     return (
-        <div className="in">
-            <div className='index'> {index} </div>
+        <div className = {styles.in}>
+            <div className= {'index'}> {index} </div>
             <div className='inf'>{inf}</div> 
         </div>
     )
@@ -18,6 +19,23 @@ function FromTo({startmonth, startyear, endmonth, endyear}){
                     <div>  to: {endmonth + '  '}{endyear}</div>
             </div>
         </>
+    )
+}
+function Label({title, type, name, value, setValue}){
+    return(
+        <>
+        <label htmlFor = {name}>
+             <h4>{title}: {''}</h4>
+        </label>
+             <input type={type}
+                id = {name}
+                name = {name}
+                 value={value}
+                 onChange={(event) => {setValue(event.target.value)}}
+                 className={styles.input}
+              /> 
+                
+        </>            
     )
 }
 function Education(){
@@ -36,6 +54,14 @@ function Education(){
     const field = ['Grade:',  'Field of study:', 'School:']
     const months = ['Ianuary', 'February', 'March', 'April', 'May', 'Jun', 'July', 'August', 'September', 'October','November', 'December']
     const years = []
+    const labels = [
+        {id:11, title: 'Grade', name: 'grade', type: 'text', value: grade, setValue: setGrade},
+        {id:22, title: 'Field of study', name: 'study', type: 'text', value: study, setValue: setStudy},
+        {id:33, title: 'School', name: 'school', type: 'text', value: school, setValue: setSchool}
+    ]
+    
+
+
     function CreateYears(){
             const yeardata = new Date()
             const y = yeardata.getFullYear()
@@ -44,7 +70,6 @@ function Education(){
         }
 
     CreateYears()
-    
     const personal = [ 
         {id: 1, inf: grade, index: 0},
         {id: 2, inf: study, index: 1},
@@ -82,34 +107,12 @@ function Education(){
         }
 
     }
-    function Form(x){
+    function Form(){
         return(
-        <>
+            <>
             <form className='form'>
-              <label>
-                 <h4>Grade: {''}</h4>
-                 <input type='text'
-                     name = 'grade'
-                     value={grade}
-                     onChange={(e) => {setGrade(e.target.value)}}
-                  />                        
-              </label>
-              <label>
-                 <h4>Field of study: {''}</h4>
-                 <input type='text'
-                     name = 'study'
-                     value={study}
-                     onChange={(e) => {setStudy(e.target.value)}}
-                  />                        
-              </label>
-              <label>
-                 <h4>School: {''} </h4>
-                 <input type='text'
-                     name = 'school'
-                     value={school}
-                     onChange={(e) => {setSchool(e.target.value)}}
-                  />                        
-              </label>
+            {labels.map((label) => <Label key ={label.id} title = {label.title} name = {label.name} type={label.type}
+                    value = {label.value} setValue={label.setValue}/>)}
               <label className='month'>
                  <h4>start month</h4>
                  <input list="studydates" name="studydates"
@@ -129,7 +132,8 @@ function Education(){
               </label>
               <label className='month'>
                  <h4>Start year</h4>
-                 <input list="startyear" name="startyear"
+             
+                 <input list="startyear" name="startyear" className='name'
                     value = {startyear}
                     onChange={(event) =>{
                         setStartyear(event.target.value)
@@ -144,7 +148,8 @@ function Education(){
                         return <option key = {year} value = {year}/>
                     })}
                   </datalist>
-              </label>
+                </label>
+              
               <label className='month'>
                  <h4>end month</h4>
                  <input list="endmonth" name="endmonth"
@@ -179,18 +184,18 @@ function Education(){
                     })}
                   </datalist>
               </label>
+
             </form>
+            <button itemID='save'  onClick={Save}>Save</button>
         </>
-    
+
         )
-    }
-    
+    }   
     return (
         <>
             <h3>Education</h3>
             <div className="basic" style={{display:show, backgroundColor: col}}>
                 {Form()}
-                <button itemID='save'  onClick={Save}>Save</button>
             </div>
             <div className="info">
                 {personal.map((persona) => <Info key = {persona.id} inf = {persona.inf} index = {field[persona.index]}/>)}
@@ -203,6 +208,4 @@ function Education(){
 function Quote() {
     return <h5>&quot;I swear by my pretty floral bonnet, I will end you.&quot;</h5>;
   }
-
-
  export {Education, Quote} ;

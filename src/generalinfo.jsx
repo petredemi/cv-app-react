@@ -9,9 +9,7 @@ function Info({index, inf}){
         </div>
     )
 }
-
-
-function Generalinfo({ x, y, z}){
+function Generalinfo(){
     const [name, setName] = useState('');
     const [email, setEmail] = useState('')
     const [mobile, setMobile] = useState('')

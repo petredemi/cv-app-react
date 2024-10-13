@@ -13,6 +13,7 @@
     display: flex;
     width: fit-content;
 }
+
 .inf{
     font-size: 1rem;
     font-weight: 600;
@@ -24,20 +25,20 @@
 form{
     display: flex;
     flex-direction: column;
-    width: 500px;
+    max-width: 400px;
 }
 h4{
     margin: 2px;
 }
 label{
-    width: 500px;
+    max-width: 450px;
     border: 1px solid red;
     display: flex;
     justify-content: space-between;
 }
 input{
     margin-left: 20px;
-    width: 350px;
+    width: 280px;
 }
 .month{
     width: 300px;
@@ -57,7 +58,7 @@ button{
 }
 .info{
     border: 4px solid red;
-    width: 500px;
+    min-width: 380px;
     border-radius: 15px;
     padding: 10px;
 

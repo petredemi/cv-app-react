@@ -1,0 +1,10 @@
+
+.in{
+    font-size: 1.1rem;
+    display: flex;
+    width: fit-content;
+    color: red;
+}
+input{
+    max-width: 250px;
+}
