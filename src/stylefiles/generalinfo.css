@@ -61,10 +61,8 @@ button{
     min-width: 380px;
     border-radius: 15px;
     padding: 10px;
+    margin-bottom: 10px;
 
-}
-.addeducation{
-    border: 4px solid black;
 }
 .info > div{
     font-size: 1rem;

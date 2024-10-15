@@ -34,49 +34,26 @@ function Label({title, type, name, value, setValue}){
         </>            
     )
 }
+const educards = ['first']
+const cards = ['second', 'third']
 function Education(){
     const [add, setAdd] = useState(0)
-function Educontent(props){
-        if(add == 0){
-         return(
+    function Educards(){
+        if (add == add){
+           return( 
             <>
-             <Edu/>
+                {educards.map((card) => <Edu key = {card} className = {card}/>)}
             </>
-        )
-    }else if( add == 1){
-            return(
-                <>
-                <Edu/>
-                <Edu/>
-                </>
-            )
-        }else if( add == 2){
-            return(
-                <>
-                    <Edu/>
-                    <Edu/>
-                    <Edu/>
-                </>
-            )
-        }else if( add == 3){
-            return(
-                <>
-                    <Edu/>
-                    <Edu/>
-                    <Edu/>
-                    <Edu/>
-                </>
-            )
+           )
         }
     }
 function Add(event){
-    if ( add > 2){return}
+    if ( add > 1){return}
     event.preventDefault()
+    educards.push(cards[add])
         setAdd(add+ 1);
     console.log(add);
-   // return(
-      //  Educontent()
-    //)
+    console.log(educards)
 }
     function Edu(){
         const [grade, setGrade] = useState('');
@@ -235,7 +212,10 @@ function Add(event){
         <div className="info">
             {personal.map((persona) => <Info key = {persona.id} inf = {persona.inf} index = {field[persona.index]}/>)}
             <FromTo  startmonth={startmonth} endmonth={endmonth} startyear={startyear} endyear={endyear}/>
-            <button itemID='edit' onClick={Edit}>Edit</button>
+            <div className= 'btn'>
+                <button itemID='edit' onClick={Edit}>Edit</button>
+                <button itemID='edit'>Delete</button>
+            </div>
         </div>
     </div>
 
@@ -248,7 +228,7 @@ function Add(event){
                         <h3>Education</h3>
                         <button itemID='add' onClick={Add}>add</button>
                 </div>
-                <Educontent/>
+                <Educards/>
             </>
     ) 
 }
