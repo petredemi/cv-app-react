@@ -8,3 +8,9 @@
 input{
     max-width: 250px;
 }
+.education{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    border: 1px solid red;
+}
